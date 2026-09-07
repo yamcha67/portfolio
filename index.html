@@ -430,14 +430,28 @@
     padding:16px 30px;
     opacity:0;
     animation:fadeUp .8s ease forwards .62s;
-    transition:opacity .3s ease, background .3s ease, color .3s ease;
+    transition:background .3s ease, color .3s ease;
   }
   html[data-theme="light"] .hero-cta{
     background:#000000;
     color:#ffffff;
   }
+  .hero-cta-arrow{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:0;
+    margin-left:0;
+    opacity:0;
+    overflow:hidden;
+    transition:width .35s cubic-bezier(.2,.8,.2,1), margin-left .35s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
+  }
   @media (hover:hover) and (pointer:fine){
-    .hero-cta:hover{ opacity:0.85; }
+    .hero-cta:hover .hero-cta-arrow{
+      width:14px;
+      margin-left:10px;
+      opacity:1;
+    }
   }
 
   .scroll-cue{
@@ -812,7 +826,14 @@
   <div class="hero-footer">
     <div class="hero-footer-left">
       <p class="tagline">Crafting meaningful brands and websites through intentional, thoughtful design.</p>
-      <a href="#works" class="hero-cta">See my Work</a>
+      <a href="#works" class="hero-cta">
+        See my Work
+        <span class="hero-cta-arrow">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
     </div>
     <div class="scroll-cue">
       <svg class="arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
