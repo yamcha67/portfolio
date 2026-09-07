@@ -464,12 +464,12 @@
   /* ---------- CONTACT ---------- */
   .contact-section{
     position:relative;
-    padding:0 56px 64px;
+    padding:0 56px 36px;
     border-top:1px solid var(--line);
   }
 
   .contact-inner{
-    padding:120px 0 100px;
+    padding:120px 0 0;
     display:flex;
     flex-direction:column;
     align-items:flex-start;
@@ -539,6 +539,24 @@
     gap:24px;
   }
 
+  .footer-end{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    margin-left:auto;
+  }
+
+  .footer-logo{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+  }
+  .footer-logo img{
+    width:28px;
+    height:31px;
+    display:block;
+  }
+
   .contact-socials{
     display:flex;
     gap:32px;
@@ -569,12 +587,20 @@
   }
 
   @media (max-width:720px){
-    .contact-section{ padding:0 22px 40px; }
-    .contact-inner{ padding:72px 0 56px; }
+    .contact-section{ padding:0 22px 28px; }
+    .contact-inner{ padding:72px 0 0; }
     .contact-title{ max-width:100%; }
     .contact-email{ margin-top:34px; flex-wrap:wrap; word-break:break-all; }
     .contact-footer{ flex-direction:column; align-items:flex-start; }
     .contact-socials{ gap:22px; flex-wrap:wrap; }
+    .footer-end{
+      width:100%;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:20px;
+      margin-left:0;
+    }
+    .footer-logo{ align-self:flex-end; }
   }
 
   @media (max-width:720px){
@@ -622,7 +648,7 @@
     .works-section{ padding:64px 16px 80px; }
     .work-name{ font-size:clamp(18px, 5.5vw, 26px); }
     .work-index{ font-size:11.5px; }
-    .contact-section{ padding:0 16px 32px; }
+    .contact-section{ padding:0 16px 24px; }
     .contact-title{ font-size:clamp(28px, 9vw, 40px); }
     .contact-email{ font-size:16px; gap:12px; }
     .contact-email .email-arrow{ width:28px; height:28px; }
@@ -705,7 +731,7 @@
   <div class="works-header">
     <div class="works-heading-group">
       <span class="works-eyebrow">a small selection</span>
-      <h2 class="works-title">selected works</h2>
+      <h2 class="works-title">Selected works</h2>
     </div>
     <span class="works-range">/2024 – 2026</span>
   </div>
@@ -759,14 +785,18 @@
 
     <div class="contact-footer">
       <div class="contact-socials">
-        <a href="#" target="_blank" rel="noopener">Instagram</a>
         <a href="#" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#" target="_blank" rel="noopener">Dribbble</a>
-        <a href="#" target="_blank" rel="noopener">Twitter</a>
+        <a href="#" target="_blank" rel="noopener">Behance</a>
       </div>
-      <div class="contact-meta">
-        <span class="dot"></span>
-        Available for freelance — Calgary, CA
+      <div class="footer-end">
+        <div class="contact-meta">
+          <span class="dot"></span>
+          Available for freelance — Calgary, CA
+        </div>
+        <div class="footer-logo">
+          <img src="Logo.svg" alt="Ali Qureshi">
+        </div>
       </div>
     </div>
   </div>
