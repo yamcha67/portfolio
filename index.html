@@ -304,6 +304,9 @@
     .portrait-wrap:hover img.portrait-alt{ opacity:1; }
   }
 
+  .portrait-wrap.tap-active img.portrait-default{ opacity:0; }
+  .portrait-wrap.tap-active img.portrait-alt{ opacity:1; }
+
   @keyframes fadeUp{
     from{ opacity:0; transform:translateY(14px); }
     to{ opacity:1; transform:translateY(0); }
@@ -822,6 +825,19 @@
     }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+</script>
+<script>
+  (function(){
+    var portrait = document.querySelector('.portrait-wrap');
+    if(!portrait) return;
+
+    var isTouch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if(!isTouch) return;
+
+    portrait.addEventListener('click', function(){
+      portrait.classList.toggle('tap-active');
+    });
   })();
 </script>
 <script>
