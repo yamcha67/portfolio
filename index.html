@@ -401,6 +401,13 @@
     margin-top:60px;
   }
 
+  .hero-footer-left{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:26px;
+  }
+
   .tagline{
     max-width:340px;
     font-size:20px;
@@ -409,6 +416,28 @@
     color:var(--fg);
     opacity:0;
     animation:fadeUp .8s ease forwards .5s;
+  }
+
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    background:#ffffff;
+    color:#000000;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    border-radius:100px;
+    padding:16px 30px;
+    opacity:0;
+    animation:fadeUp .8s ease forwards .62s;
+    transition:opacity .3s ease, background .3s ease, color .3s ease;
+  }
+  html[data-theme="light"] .hero-cta{
+    background:#000000;
+    color:#ffffff;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .hero-cta:hover{ opacity:0.85; }
   }
 
   .scroll-cue{
@@ -781,7 +810,10 @@
   </div>
 
   <div class="hero-footer">
-    <p class="tagline">Crafting meaningful brands and websites through intentional, thoughtful design.</p>
+    <div class="hero-footer-left">
+      <p class="tagline">Crafting meaningful brands and websites through intentional, thoughtful design.</p>
+      <a href="#works" class="hero-cta">See my Work</a>
+    </div>
     <div class="scroll-cue">
       <svg class="arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
