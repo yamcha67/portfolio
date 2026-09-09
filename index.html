@@ -8,7 +8,7 @@
   (function(){
     try{
       var stored = localStorage.getItem('theme');
-      if(stored === 'light'){ document.documentElement.setAttribute('data-theme', 'light'); }
+      if(stored === 'dark'){ document.documentElement.setAttribute('data-theme', 'dark'); }
     }catch(e){}
   })();
 </script>
@@ -16,18 +16,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter+Tight:wght@600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
   :root{
-    --bg: #000000;
-    --fg: #f5f5f2;
-    --muted: #8a8a86;
-    --line: rgba(245,245,242,0.14);
-    --accent: #ffffff;
-    --accent-contrast: #000000;
-    --hover-tint: rgba(245,245,242,0.03);
-    --menu-link-inactive: rgba(245,245,242,0.4);
-    color-scheme: dark;
-  }
-
-  html[data-theme="light"]{
     --bg: #f5f4f0;
     --fg: #0d0d0c;
     --muted: #6b6b67;
@@ -37,6 +25,18 @@
     --hover-tint: rgba(13,13,12,0.035);
     --menu-link-inactive: rgba(13,13,12,0.35);
     color-scheme: light;
+  }
+
+  html[data-theme="dark"]{
+    --bg: #000000;
+    --fg: #f5f5f2;
+    --muted: #8a8a86;
+    --line: rgba(245,245,242,0.14);
+    --accent: #ffffff;
+    --accent-contrast: #000000;
+    --hover-tint: rgba(245,245,242,0.03);
+    --menu-link-inactive: rgba(245,245,242,0.4);
+    color-scheme: dark;
   }
 
   html{ transition:background .4s ease; }
@@ -108,10 +108,10 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:32px 56px;
     z-index:60;
-    mix-blend-mode:difference;
-  }
-  html[data-theme="light"] nav{
     mix-blend-mode:normal;
+  }
+  html[data-theme="dark"] nav{
+    mix-blend-mode:difference;
   }
   .logo{
     width:28px; height:31px;
@@ -156,20 +156,20 @@
     transition:opacity .3s ease, transform .4s cubic-bezier(.2,.8,.2,1);
   }
   .theme-toggle .icon-sun{
-    opacity:1;
-    transform:rotate(0deg) scale(1);
-  }
-  .theme-toggle .icon-moon{
-    opacity:0;
-    transform:rotate(-90deg) scale(0.6);
-  }
-  html[data-theme="light"] .theme-toggle .icon-sun{
     opacity:0;
     transform:rotate(90deg) scale(0.6);
   }
-  html[data-theme="light"] .theme-toggle .icon-moon{
+  .theme-toggle .icon-moon{
     opacity:1;
     transform:rotate(0deg) scale(1);
+  }
+  html[data-theme="dark"] .theme-toggle .icon-sun{
+    opacity:1;
+    transform:rotate(0deg) scale(1);
+  }
+  html[data-theme="dark"] .theme-toggle .icon-moon{
+    opacity:0;
+    transform:rotate(-90deg) scale(0.6);
   }
 
   @media (hover:hover) and (pointer:fine){
@@ -412,8 +412,8 @@
   .hero-cta{
     display:inline-flex;
     align-items:center;
-    background:#ffffff;
-    color:#000000;
+    background:#000000;
+    color:#ffffff;
     text-decoration:none;
     font-size:17.5px;
     font-weight:500;
@@ -423,9 +423,9 @@
     animation:fadeUp .8s ease forwards .62s;
     transition:background .3s ease, color .3s ease;
   }
-  html[data-theme="light"] .hero-cta{
-    background:#000000;
-    color:#ffffff;
+  html[data-theme="dark"] .hero-cta{
+    background:#ffffff;
+    color:#000000;
   }
   .hero-cta-arrow{
     display:inline-flex;
@@ -578,8 +578,8 @@
   .contact-email{
     display:inline-flex;
     align-items:center;
-    background:#ffffff;
-    color:#000000;
+    background:#000000;
+    color:#ffffff;
     text-decoration:none;
     font-size:17.5px;
     font-weight:500;
@@ -589,9 +589,9 @@
     margin-bottom:120px;
     transition:background .3s ease, color .3s ease;
   }
-  html[data-theme="light"] .contact-email{
-    background:#000000;
-    color:#ffffff;
+  html[data-theme="dark"] .contact-email{
+    background:#ffffff;
+    color:#000000;
   }
   .contact-email .email-arrow{
     display:inline-flex;
@@ -941,20 +941,20 @@
     if(!toggle) return;
     var root = document.documentElement;
 
-    function isLight(){ return root.getAttribute('data-theme') === 'light'; }
+    function isDark(){ return root.getAttribute('data-theme') === 'dark'; }
 
     function updateLabel(){
-      toggle.setAttribute('aria-label', isLight() ? 'Switch to dark mode' : 'Switch to light mode');
+      toggle.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode');
     }
     updateLabel();
 
     toggle.addEventListener('click', function(){
-      if(isLight()){
+      if(isDark()){
         root.removeAttribute('data-theme');
-        try{ localStorage.setItem('theme', 'dark'); }catch(e){}
-      } else {
-        root.setAttribute('data-theme', 'light');
         try{ localStorage.setItem('theme', 'light'); }catch(e){}
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        try{ localStorage.setItem('theme', 'dark'); }catch(e){}
       }
       updateLabel();
     });
